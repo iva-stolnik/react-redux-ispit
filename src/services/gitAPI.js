@@ -1,6 +1,3 @@
-//Unauthenticated clients can make 60 requests per hour
-const authentication = "token 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";
-
 function resolveResponse(response) {
   if (response.status === 200) {
     return response.json();
@@ -13,18 +10,10 @@ function resolveResponse(response) {
 
 export function fetchUser(user) {
   const url = `https://api.github.com/users/${user}`;
-  return fetch(url, {
-    headers: {
-      authorization: authentication,
-    },
-  }).then((response) => resolveResponse(response));
+  return fetch(url).then((response) => resolveResponse(response));
 }
 
 export function fetchRepository(user) {
   const url = `https://api.github.com/users/${user}/repos`;
-  return fetch(url, {
-    headers: {
-      authorization: authentication,
-    },
-  }).then((response) => resolveResponse(response));
+  return fetch(url).then((response) => resolveResponse(response));
 }
